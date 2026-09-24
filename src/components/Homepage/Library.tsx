@@ -1,6 +1,7 @@
 import React from "react";
+import WorkoutCard from "./WorkoutCard";
 
-const Library = () => {
+const Library = ({ workouts }: { workouts: any[] }) => {
   return (
     <section id="library" className="bg-[#0b0c0f] px-5 py-16">
       <div className="container mx-auto">
@@ -18,6 +19,13 @@ const Library = () => {
           <p className="mt-2 text-zinc-400">
             Twelve lifts covering every major muscle group.
           </p>
+        </div>
+
+        {/* Workout Cards */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {workouts.map((workout) => (
+            <WorkoutCard key={workout.id} workout={workout} />
+          ))}
         </div>
 
       </div>

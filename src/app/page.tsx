@@ -14,7 +14,7 @@ const Home = async () => {
     <main>
        <Hero />
 
-       <Library />
+       <Library workouts={workouts} />
       <h1>FitLog</h1>
     </main>
   );
