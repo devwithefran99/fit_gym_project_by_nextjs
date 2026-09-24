@@ -1,11 +1,23 @@
-import React from 'react';
+import Hero from "@/components/Homepage/Hero";
+import Library from "@/components/Homepage/Library";
 
-const page = () => {
+const Home = async () => {
+  const response = await fetch(
+    "https://api.abcz.workers.dev/api/fitlog"
+  );
+
+  const workouts = await response.json();
+
+  console.log(workouts);
+
   return (
-    <div>
-      hello
-    </div>
+    <main>
+       <Hero />
+
+       <Library />
+      <h1>FitLog</h1>
+    </main>
   );
 };
 
-export default page;
+export default Home;
