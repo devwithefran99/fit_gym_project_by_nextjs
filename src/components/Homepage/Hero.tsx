@@ -3,26 +3,26 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="bg-[#0b0c0f] px-5 py-16">
-      <div className="container mx-auto flex items-center justify-between gap-10">
+    <section className="bg-[#0b0c0f] px-5 py-12 md:py-16">
+      <div className="container mx-auto flex flex-col items-center gap-10 md:flex-row md:justify-between">
 
         {/* Left Side - Text */}
-        <div className="flex-1">
-          <p className="mb-3 text-sm font-medium tracking-[0.2em] text-lime-400">
+        <div className="order-2 flex-1 text-center md:order-1 md:text-left">
+          <p className="mb-3 text-xs font-medium tracking-[0.2em] text-lime-400 md:text-sm">
             WORKOUT LIBRARY
           </p>
 
-          <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl">
+          <h1 className="mx-auto max-w-3xl text-3xl font-bold leading-tight text-white sm:text-4xl md:mx-0 md:text-6xl">
             TRAIN WITH INTENT. LOG EVERY SET.
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-zinc-400 md:mx-0 md:text-base">
             Structured workouts for every goal. Train with purpose, track your
             progress, and build consistency one session at a time.
           </p>
 
-          <a
-            href="#library"
+          
+          <a  href="#library"
             className="mt-7 inline-flex items-center gap-2 rounded-full bg-lime-400 px-5 py-3 text-sm font-bold text-black"
           >
             BROWSE WORKOUTS
@@ -31,7 +31,7 @@ const Hero = () => {
         </div>
 
         {/* Right Side - Image */}
-        <div className="flex-1">
+        <div className="order-1 w-full flex-1 max-w-sm md:order-2 md:max-w-none">
           <Image
             src="/banner.png"
             alt="Workout training"
