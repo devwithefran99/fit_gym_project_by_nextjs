@@ -44,6 +44,6 @@ FITGYM aims to make workout planning simple and organized by providing a central
 
 ##  Developer
 
-**FITGYM** — Workout Library & Personal Workout Planner
+**FITGYM** — Workout Library & Personal Workout Planner. Developed BY devwithEfran
 
 ---
