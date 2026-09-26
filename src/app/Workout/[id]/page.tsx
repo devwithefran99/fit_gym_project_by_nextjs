@@ -32,9 +32,8 @@ const WorkoutDetailsPage = async ({params}: {
     <main className="min-h-screen bg-[#0b0c0f] px-5 py-12">
       <div className="container mx-auto max-w-7xl">
 
-        
         <Link href="/" className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-lime-400" >
-           Back to Workouts
+           Back to Workout page
         </Link>
 
         
