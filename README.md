@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  FITGYM
 
-## Getting Started
+### Your Personal Workout Library
 
-First, run the development server:
+FITGYM is a modern workout library web application built with Next.js. It allows users to explore different workouts, view detailed exercise information, create a personal workout plan, and save their favorite workouts for later.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##  Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js** – React framework for building the application.
+- **React** – For building interactive user interfaces.
+- **TypeScript** – For type safety and maintainable code.
+- **Tailwind CSS** – For styling and responsive UI design.
+- **React Toastify** – For displaying notifications.
+- **REST API** – For fetching workout data.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+##  Key Features
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Workout Library
+Explore a collection of workouts with information about muscle groups, difficulty levels, duration, and more.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Workout Details
+View detailed information about each workout, including descriptions, instructions, sets, reps, and estimated calories burned.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3.My Workout Plan
+Add workouts to your personal plan and manage your selected exercises in one place.
 
-## Deploy on Vercel
+### 4.Save Favorite Workouts
+Save your favorite workouts and access them anytime from the Saved section.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5.Track Your Workout Progress
+Mark completed workouts as done and keep track of your workout plan progress.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+##  Project Goal
+
+FITGYM aims to make workout planning simple and organized by providing a centralized platform to discover, save, and manage workouts.
+
+---
+
+##  Developer
+
+**FITGYM** — Workout Library & Personal Workout Planner
+
+---
