@@ -3,8 +3,9 @@
 import { useContext } from "react";
 import { toast } from "react-toastify";
 import { WorkoutContext } from "@/context/WorkoutContext";
+import { Workout } from "@/types/workout";
 
-const WorkoutActions = ({ workout }: { workout: any }) => {
+const WorkoutActions = ({ workout }: { workout: Workout }) => {
   const { plan, setPlan, saved, setSaved } = useContext(WorkoutContext);
 
   const handleAddToPlan = () => {
@@ -12,6 +13,11 @@ const WorkoutActions = ({ workout }: { workout: any }) => {
 
     if (alreadyAdded) {
       toast.warning("Workout already added to your plan!");
+      return;
+    }
+
+    if (plan.length >= 5) {
+      toast.warning("Your plan is full! Maximum 5 workouts allowed.");
       return;
     }
 
@@ -35,7 +41,7 @@ const WorkoutActions = ({ workout }: { workout: any }) => {
 
   return (
     <div className="mt-8 flex flex-wrap gap-4">
-      {/* Add to Plan Button */}
+      {/* Add to Plan */}
       <button
         onClick={handleAddToPlan}
         className="rounded-full bg-lime-400 px-6 py-3 font-bold text-black transition hover:bg-lime-300"
@@ -43,7 +49,7 @@ const WorkoutActions = ({ workout }: { workout: any }) => {
         + Add to Today&apos;s Plan
       </button>
 
-      {/* Save for Later Button */}
+      {/* Save for Later */}
       <button
         onClick={handleSave}
         className="rounded-full border border-zinc-700 px-6 py-3 font-bold text-white transition hover:border-lime-400 hover:text-lime-400"

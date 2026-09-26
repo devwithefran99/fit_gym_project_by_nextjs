@@ -5,13 +5,17 @@ import {
   ReactNode,
   useEffect,
   useState,
+  Dispatch,
+  SetStateAction,
 } from "react";
 
+import { Workout } from "@/types/workout";
+
 type WorkoutContextType = {
-  plan: any[];
-  setPlan: React.Dispatch<React.SetStateAction<any[]>>;
-  saved: any[];
-  setSaved: React.Dispatch<React.SetStateAction<any[]>>;
+  plan: Workout[];
+  setPlan: Dispatch<SetStateAction<Workout[]>>;
+  saved: Workout[];
+  setSaved: Dispatch<SetStateAction<Workout[]>>;
 };
 
 export const WorkoutContext = createContext<WorkoutContextType>({
@@ -22,8 +26,8 @@ export const WorkoutContext = createContext<WorkoutContextType>({
 });
 
 const WorkoutProvider = ({ children }: { children: ReactNode }) => {
-  const [plan, setPlan] = useState<any[]>([]);
-  const [saved, setSaved] = useState<any[]>([]);
+  const [plan, setPlan] = useState<Workout[]>([]);
+  const [saved, setSaved] = useState<Workout[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load data from LocalStorage

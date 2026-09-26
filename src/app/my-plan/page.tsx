@@ -5,33 +5,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { WorkoutContext } from "@/context/WorkoutContext";
+import { Workout } from "@/types/workout";
+
+type TabType = "plan" | "saved";
+type SortType = "duration" | "calories" | "rating";
 
 const MyPlanPage = () => {
   const { plan, setPlan, saved, setSaved } = useContext(WorkoutContext);
 
-  const [activeTab, setActiveTab] = useState("plan");
-  const [sortBy, setSortBy] = useState("duration");
+  const [activeTab, setActiveTab] = useState<TabType>("plan");
+  const [sortBy, setSortBy] = useState<SortType>("duration");
   const [completedWorkouts, setCompletedWorkouts] = useState<number[]>([]);
 
   // Active tab onujayi workout list
   const currentWorkouts = activeTab === "plan" ? plan : saved;
 
   // Sort workouts
-  const sortedWorkouts = [...currentWorkouts].sort((a, b) => {
-    if (sortBy === "duration") {
-      return a.duration - b.duration;
-    }
+  const sortedWorkouts = [...currentWorkouts].sort(
+    (a: Workout, b: Workout) => {
+      if (sortBy === "duration") {
+        return a.duration - b.duration;
+      }
 
-    if (sortBy === "calories") {
-      return b.caloriesBurned - a.caloriesBurned;
-    }
+      if (sortBy === "calories") {
+        return b.caloriesBurned - a.caloriesBurned;
+      }
 
-    if (sortBy === "rating") {
-      return b.rating - a.rating;
-    }
+      if (sortBy === "rating") {
+        return b.rating - a.rating;
+      }
 
-    return 0;
-  });
+      return 0;
+    }
+  );
 
   // Metrics
   const totalMinutes = plan.reduce(
@@ -82,9 +88,7 @@ const MyPlanPage = () => {
       <div className="mx-auto max-w-7xl">
         {/* Page Heading */}
         <div className="mb-6">
-          <h1 className="text-3xl font-extrabold text-white">
-            MY PLAN
-          </h1>
+          <h1 className="text-3xl font-extrabold text-white">MY PLAN</h1>
 
           <p className="mt-2 text-sm text-zinc-400">
             Cap of five lifts for today. Finish them, then load more.
@@ -128,9 +132,13 @@ const MyPlanPage = () => {
         {/* Tabs and Sorting */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           {/* DaisyUI Tabs */}
-          <div role="tablist" className="tabs tabs-box rounded-xl border border-[#272a35] bg-[#14151c] p-1">
+          <div
+            role="tablist"
+            className="tabs tabs-box rounded-xl border border-[#272a35] bg-[#14151c] p-1"
+          >
             <button
               role="tab"
+              aria-selected={activeTab === "plan"}
               onClick={() => setActiveTab("plan")}
               className={`tab h-10 rounded-lg px-5 text-sm ${
                 activeTab === "plan"
@@ -143,6 +151,7 @@ const MyPlanPage = () => {
 
             <button
               role="tab"
+              aria-selected={activeTab === "saved"}
               onClick={() => setActiveTab("saved")}
               className={`tab h-10 rounded-lg px-5 text-sm ${
                 activeTab === "saved"
@@ -160,7 +169,7 @@ const MyPlanPage = () => {
 
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={(e) => setSortBy(e.target.value as SortType)}
               className="select select-sm w-28 border border-[#272a35] bg-[#14151c] text-sm text-white"
             >
               <option value="duration">Duration</option>
@@ -173,7 +182,7 @@ const MyPlanPage = () => {
         {/* Workout List */}
         {sortedWorkouts.length > 0 ? (
           <div className="space-y-4">
-            {sortedWorkouts.map((workout) => (
+            {sortedWorkouts.map((workout: Workout) => (
               <div
                 key={workout.id}
                 className="flex flex-col gap-5 rounded-2xl border border-[#272a35] bg-[#14151c] p-4 transition hover:border-zinc-600 md:flex-row md:items-center"
@@ -221,7 +230,7 @@ const MyPlanPage = () => {
                 {/* Actions */}
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
-                    href={`/workout/${workout.id}`}
+                    href={`/Workout/${workout.id}`}
                     className="rounded-full border border-[#394052] px-5 py-2.5 text-center text-xs font-medium text-zinc-200 transition hover:border-lime-400 hover:text-lime-400"
                   >
                     View Details

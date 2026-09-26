@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Workout } from "@/types/workout";
 
-const WorkoutCard = ({ workout }: { workout: any }) => {
+const WorkoutCard = ({ workout }: { workout: Workout }) => {
   return (
     <Link href={`/Workout/${workout.id}`}>
 
