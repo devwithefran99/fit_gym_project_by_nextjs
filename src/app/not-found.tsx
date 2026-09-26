@@ -17,10 +17,7 @@ const NotFound = () => {
           Return to the workout library and continue your training.
         </p>
 
-        <Link
-          href="/"
-          className="mt-8 inline-flex rounded-full bg-lime-400 px-7 py-3 text-sm font-bold text-black transition hover:bg-lime-300"
-        >
+        <Link href="/" className="mt-8 inline-flex rounded-full bg-lime-400 px-7 py-3 text-sm font-bold text-black transition hover:bg-lime-300">
           Back to Workouts
         </Link>
       </div>

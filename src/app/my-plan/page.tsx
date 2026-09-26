@@ -6,6 +6,7 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import { WorkoutContext } from "@/context/WorkoutContext";
 import { Workout } from "@/types/workout";
+import { MdCancel } from "react-icons/md";
 
 type TabType = "plan" | "saved";
 type SortType = "duration" | "calories" | "rating";
@@ -17,10 +18,9 @@ const MyPlanPage = () => {
   const [sortBy, setSortBy] = useState<SortType>("duration");
   const [completedWorkouts, setCompletedWorkouts] = useState<number[]>([]);
 
-  // Active tab onujayi workout list
+  
   const currentWorkouts = activeTab === "plan" ? plan : saved;
 
-  // Sort workouts
   const sortedWorkouts = [...currentWorkouts].sort(
     (a: Workout, b: Workout) => {
       if (sortBy === "duration") {
@@ -39,7 +39,7 @@ const MyPlanPage = () => {
     }
   );
 
-  // Metrics
+
   const totalMinutes = plan.reduce(
     (total, workout) => total + workout.duration,
     0
@@ -54,7 +54,7 @@ const MyPlanPage = () => {
     plan.some((workout) => workout.id === id)
   ).length;
 
-  // Remove workout
+  
   const handleRemove = (id: number) => {
     if (activeTab === "plan") {
       setPlan(plan.filter((workout) => workout.id !== id));
@@ -71,7 +71,7 @@ const MyPlanPage = () => {
     }
   };
 
-  // Mark as Done
+
   const handleMarkDone = (id: number) => {
     if (completedWorkouts.includes(id)) {
       toast.info("Workout already completed!");
@@ -86,7 +86,7 @@ const MyPlanPage = () => {
   return (
     <main className="min-h-screen bg-[#0b0c0f] px-5 py-10">
       <div className="mx-auto max-w-7xl">
-        {/* Page Heading */}
+       
         <div className="mb-6">
           <h1 className="text-3xl font-extrabold text-white">MY PLAN</h1>
 
@@ -95,9 +95,9 @@ const MyPlanPage = () => {
           </p>
         </div>
 
-        {/* Metrics */}
+        
         <div className="mb-8 grid grid-cols-1 gap-4 rounded-2xl border border-[#272a35] bg-[#14151c] p-5 sm:grid-cols-3">
-          {/* Exercises */}
+         
           <div className="border-b border-[#272a35] pb-4 sm:border-b-0 sm:border-r sm:pb-0">
             <p className="text-xs text-zinc-400">Exercises</p>
 
@@ -110,7 +110,7 @@ const MyPlanPage = () => {
             </p>
           </div>
 
-          {/* Minutes */}
+          
           <div className="border-b border-[#272a35] pb-4 sm:border-b-0 sm:border-r sm:px-8 sm:pb-0">
             <p className="text-xs text-zinc-400">Minutes</p>
 
@@ -119,7 +119,7 @@ const MyPlanPage = () => {
             </h2>
           </div>
 
-          {/* Calories */}
+          
           <div className="sm:pl-8">
             <p className="text-xs text-zinc-400">Calories</p>
 
@@ -129,9 +129,9 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        {/* Tabs and Sorting */}
+       
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          {/* DaisyUI Tabs */}
+          
           <div
             role="tablist"
             className="tabs tabs-box rounded-xl border border-[#272a35] bg-[#14151c] p-1"
@@ -163,7 +163,7 @@ const MyPlanPage = () => {
             </button>
           </div>
 
-          {/* Sort Dropdown */}
+         
           <div className="flex items-center gap-3">
             <span className="text-xs text-zinc-400">Sort By</span>
 
@@ -179,7 +179,7 @@ const MyPlanPage = () => {
           </div>
         </div>
 
-        {/* Workout List */}
+        
         {sortedWorkouts.length > 0 ? (
           <div className="space-y-4">
             {sortedWorkouts.map((workout: Workout) => (
@@ -187,7 +187,7 @@ const MyPlanPage = () => {
                 key={workout.id}
                 className="flex flex-col gap-5 rounded-2xl border border-[#272a35] bg-[#14151c] p-4 transition hover:border-zinc-600 md:flex-row md:items-center"
               >
-                {/* Workout Image */}
+               
                 <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-xl md:h-20 md:w-36">
                   <Image
                     src={workout.image}
@@ -198,7 +198,7 @@ const MyPlanPage = () => {
                   />
                 </div>
 
-                {/* Workout Information */}
+               
                 <div className="min-w-0 flex-1">
                   <h3 className="text-lg font-bold uppercase text-white">
                     {workout.name}
@@ -208,7 +208,7 @@ const MyPlanPage = () => {
                     {workout.equipment}
                   </p>
 
-                  {/* Stats */}
+                 
                   <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-zinc-400">
                     <span>
                       <span className="mr-1 text-lime-400">◷</span>
@@ -227,7 +227,7 @@ const MyPlanPage = () => {
                   </div>
                 </div>
 
-                {/* Actions */}
+              
                 <div className="flex flex-wrap items-center gap-3">
                   <Link
                     href={`/Workout/${workout.id}`}
@@ -247,8 +247,8 @@ const MyPlanPage = () => {
                       }`}
                     >
                       {completedWorkouts.includes(workout.id)
-                        ? "✓ Completed"
-                        : "✓ Mark as Done"}
+                        ? "Completed"
+                        : "Mark as Done"}
                     </button>
                   )}
 
@@ -258,14 +258,13 @@ const MyPlanPage = () => {
                     aria-label="Remove workout"
                     title="Remove workout"
                   >
-                    ×
+                    <MdCancel />
                   </button>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          /* Empty State */
           <div className="flex min-h-64 flex-col items-center justify-center rounded-2xl border border-[#272a35] bg-[#14151c] px-5 py-12 text-center">
             <h2 className="text-xl font-bold text-white">
               Nothing added yet

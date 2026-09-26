@@ -30,7 +30,7 @@ const WorkoutProvider = ({ children }: { children: ReactNode }) => {
   const [saved, setSaved] = useState<Workout[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load data from LocalStorage
+  
   useEffect(() => {
     const storedPlan = localStorage.getItem("fitlog-plan");
     const storedSaved = localStorage.getItem("fitlog-saved");

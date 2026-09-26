@@ -7,7 +7,7 @@ const WorkoutCard = ({ workout }: { workout: Workout }) => {
     <Link href={`/Workout/${workout.id}`}>
 
       <div className="group overflow-hidden rounded-2xl border border-zinc-800 bg-[#141519] transition duration-300 hover:-translate-y-1 hover:border-lime-400 hover:shadow-lg hover:shadow-lime-400/5">
-        {/* Workout Image */}
+       
         <div className="relative h-52 w-full overflow-hidden">
           <Image
             src={workout.image}
@@ -18,7 +18,6 @@ const WorkoutCard = ({ workout }: { workout: Workout }) => {
           
         </div>
 
-        {/* Workout Information */}
         <div className="p-5">
           {/* Muscle Groups */}
           <div className="mb-3 flex flex-wrap gap-2">
@@ -37,7 +36,7 @@ const WorkoutCard = ({ workout }: { workout: Workout }) => {
             {workout.name}
           </h3>
           
-          {/* Equipment */}
+          
           <p className="mt-2 text-sm text-zinc-400">
             {workout.equipment}
           </p>

@@ -6,7 +6,6 @@ const Hero = () => {
     <section className="bg-[#0b0c0f] px-5 py-12 md:py-16">
       <div className="container mx-auto flex flex-col items-center gap-10 md:flex-row md:justify-between">
 
-        {/* Left Side - Text */}
         <div className="order-2 flex-1 text-center md:order-1 md:text-left">
           <p className="mb-3 text-xs font-medium tracking-[0.2em] text-lime-400 md:text-sm">
             WORKOUT LIBRARY
@@ -23,22 +22,19 @@ const Hero = () => {
 
           
           <a  href="#library"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-lime-400 px-5 py-3 text-sm font-bold text-black"
-          >
+            className="mt-7 inline-flex items-center gap-2 rounded-full bg-lime-400 px-5 py-3 text-sm font-bold text-black">
             BROWSE WORKOUTS
-            <span>→</span>
           </a>
         </div>
 
-        {/* Right Side - Image */}
+       
         <div className="order-1 w-full flex-1 max-w-sm md:order-2 md:max-w-none">
           <Image
             src="/banner.png"
             alt="Workout training"
             width={600}
             height={500}
-            className="h-auto w-full object-contain"
-          />
+            className="h-auto w-full object-contain"/>
         </div>
 
       </div>

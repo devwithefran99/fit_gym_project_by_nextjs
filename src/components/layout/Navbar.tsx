@@ -2,17 +2,24 @@
 import { WorkoutContext } from "@/context/WorkoutContext";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useContext } from "react";
 
 const Navbar = () => {
+  const pathname = usePathname();
+
+const isWorkoutActive =
+  pathname === "/" || pathname.startsWith("/workout");
+
+const isMyPlanActive = pathname === "/my-plan";
   const { plan, saved } = useContext(WorkoutContext);
   return (
     <nav className="border-b border-zinc-800 bg-[#0b0c0f]">
       <div className="container mx-auto flex h-14 items-center justify-between px-5">
         
-        {/* navbar-start */}
+      
         <div className="flex items-center gap-3">
-          {/* Mobile hamburger dropdown */}
+        
           <div className="dropdown lg:hidden">
             <div
               tabIndex={0}
@@ -39,25 +46,19 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content z-10 mt-3 w-48 rounded-box border border-zinc-800 bg-[#0b0c0f] p-2 shadow-lg"
             >
               <li>
-                <Link
-                  href="/"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white"
-                >
+                <Link href="/" className="rounded-md px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white" >
                   Workouts
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/my-plan"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white"
-                >
+                <Link href="/my-plan" className="rounded-md px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white" >
                   My Plan
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Logo */}
+          
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.png" alt="FitLog" width={24} height={24} />
             <span className="text-sm font-bold tracking-wide text-white">
@@ -66,24 +67,27 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* navbar-center (desktop only) */}
-        <div className="hidden items-center gap-2 lg:flex">
-          <Link
-            href="/"
-            className="rounded-full bg-lime-400 px-4 py-2 text-sm font-medium text-black"
-          >
-            Workouts
-          </Link>
+        
+       <div className="hidden items-center gap-2 lg:flex">
+  <Link href="/" className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+      isWorkoutActive
+        ? "bg-lime-400 text-black"
+        : "text-zinc-400 hover:text-white"
+    }`} >
+    Workouts
+  </Link>
 
-          <Link
-            href="/my-plan"
-            className="rounded-full px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white"
-          >
-            My Plan
-          </Link>
-        </div>
+  <Link
+    href="/my-plan"
+    className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+      isMyPlanActive
+        ? "bg-lime-400 text-black"
+        : "text-zinc-400 hover:text-white"}`}>
+   My Plan
+  </Link>
+</div>
 
-        {/* navbar-end */}
+        
         <div className="flex items-center gap-2">
           <Link
             href="/my-plan"

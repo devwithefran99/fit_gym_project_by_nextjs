@@ -41,20 +41,14 @@ const WorkoutActions = ({ workout }: { workout: Workout }) => {
 
   return (
     <div className="mt-8 flex flex-wrap gap-4">
-      {/* Add to Plan */}
-      <button
-        onClick={handleAddToPlan}
-        className="rounded-full bg-lime-400 px-6 py-3 font-bold text-black transition hover:bg-lime-300"
-      >
-        + Add to Today&apos;s Plan
+    
+      <button onClick={handleAddToPlan} className="rounded-full bg-lime-400 px-6 py-3 font-bold text-black transition hover:bg-lime-300">
+         Add to Today&apos;s Plan
       </button>
 
-      {/* Save for Later */}
-      <button
-        onClick={handleSave}
-        className="rounded-full border border-zinc-700 px-6 py-3 font-bold text-white transition hover:border-lime-400 hover:text-lime-400"
-      >
-        ♡ Save for Later
+      
+      <button onClick={handleSave} className="rounded-full border border-zinc-700 px-6 py-3 font-bold text-white transition hover:border-lime-400 hover:text-lime-400">
+         Save for Later
       </button>
     </div>
   );

@@ -2,11 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import WorkoutActions from "@/components/workout/WorkoutActions";
 
-const WorkoutDetailsPage = async ({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) => {
+const WorkoutDetailsPage = async ({params}: {
+  params: Promise<{ id: string }>;}) => {
   const { id } = await params;
 
   const response = await fetch(
@@ -21,10 +18,7 @@ const WorkoutDetailsPage = async ({
             Workout Not Found
           </h1>
 
-          <Link
-            href="/"
-            className="mt-5 inline-block rounded-full bg-lime-400 px-6 py-3 font-bold text-black"
-          >
+          <Link href="/" className="mt-5 inline-block rounded-full bg-lime-400 px-6 py-3 font-bold text-black" >
             Back to Workouts
           </Link>
         </div>
@@ -38,18 +32,15 @@ const WorkoutDetailsPage = async ({
     <main className="min-h-screen bg-[#0b0c0f] px-5 py-12">
       <div className="container mx-auto max-w-7xl">
 
-        {/* Back Button */}
-        <Link
-          href="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-lime-400"
-        >
-          ← Back to Workouts
+        
+        <Link href="/" className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-lime-400" >
+           Back to Workouts
         </Link>
 
-        {/* Main Workout Details */}
+        
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
 
-          {/* Left Side - Workout Image */}
+         
           <div className="relative h-[400px] overflow-hidden rounded-2xl border border-zinc-800 sm:h-[550px] lg:h-[730px]">
             <Image
               src={workout.image}
@@ -61,20 +52,20 @@ const WorkoutDetailsPage = async ({
             />
           </div>
 
-          {/* Right Side - Workout Information */}
+          
           <div className="flex flex-col">
 
-            {/* Workout Title */}
+          
             <h1 className="text-3xl font-extrabold uppercase leading-tight text-white sm:text-4xl lg:text-5xl">
               {workout.name}
             </h1>
 
-            {/* Description */}
+           
             <p className="mt-4 text-base leading-7 text-zinc-400">
               {workout.description}
             </p>
 
-            {/* Muscle Groups */}
+            
             <div className="mt-5 flex flex-wrap gap-3">
               {workout.muscleGroups.map((muscle: string) => (
                 <span
@@ -86,10 +77,9 @@ const WorkoutDetailsPage = async ({
               ))}
             </div>
 
-            {/* Workout Specifications */}
             <div className="mt-7 overflow-hidden rounded-2xl border border-zinc-800 bg-[#141720]">
 
-              {/* Equipment */}
+             
               <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Equipment
@@ -100,7 +90,7 @@ const WorkoutDetailsPage = async ({
                 </span>
               </div>
 
-              {/* Difficulty */}
+           
               <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Difficulty
@@ -111,7 +101,7 @@ const WorkoutDetailsPage = async ({
                 </span>
               </div>
 
-              {/* Sets */}
+           
               <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Sets
@@ -122,7 +112,7 @@ const WorkoutDetailsPage = async ({
                 </span>
               </div>
 
-              {/* Reps */}
+              
               <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Reps
@@ -133,7 +123,7 @@ const WorkoutDetailsPage = async ({
                 </span>
               </div>
 
-              {/* Duration */}
+             
               <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Duration
@@ -144,7 +134,7 @@ const WorkoutDetailsPage = async ({
                 </span>
               </div>
 
-              {/* Calories */}
+              
               <div className="flex items-center justify-between gap-4 border-b border-zinc-800 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Calories
@@ -155,7 +145,7 @@ const WorkoutDetailsPage = async ({
                 </span>
               </div>
 
-              {/* Rating */}
+              
               <div className="flex items-center justify-between gap-4 px-6 py-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                   Rating
@@ -167,7 +157,7 @@ const WorkoutDetailsPage = async ({
               </div>
             </div>
 
-            {/* Instructions */}
+            
             <section className="mt-8">
               <h2 className="text-base font-bold uppercase tracking-wider text-white">
                 Instructions
@@ -176,10 +166,7 @@ const WorkoutDetailsPage = async ({
               <div className="mt-4 space-y-4">
                 {workout.instructions.map(
                   (instruction: string, index: number) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-3"
-                    >
+                    <div key={index} className="flex items-start gap-3" >
                       <span className="text-sm text-zinc-500">
                         {index + 1}.
                       </span>
@@ -193,7 +180,7 @@ const WorkoutDetailsPage = async ({
               </div>
             </section>
 
-            {/* Add to Plan & Save Buttons */}
+           
             <WorkoutActions workout={workout} />
 
           </div>
